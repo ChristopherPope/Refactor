@@ -11,6 +11,13 @@ internal sealed class CompanyRepository : Repository<Company>, ICompanyRepositor
     {
     }
 
+    public async Task<Company?> ReadById(int id, CancellationToken cancellationToken)
+    {
+        return await Entities
+            .Where(c => c.Id == id)
+            .FirstOrDefaultAsync(cancellationToken);
+    }
+
     public async Task<List<Company>> ReadAll(CancellationToken cancellationToken)
     {
         return await Entities
