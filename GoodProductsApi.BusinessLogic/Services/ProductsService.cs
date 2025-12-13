@@ -23,11 +23,21 @@ internal sealed class ProductsService : IProductsService
         _logger = logger;
     }
 
-    public async Task<Result> Create(ProductDto productDto, CancellationToken cancellationToken)
+    public async Task<Result<ProductDto>> Create(ProductDto productDto, CancellationToken cancellationToken)
     {
         try
         {
-            throw new NotImplementedException();
+            var company = await _unitOfWork.Companies.ReadById(productDto.CompanyId, cancellationToken);
+            if (company is null)
+            {
+                return new EntityNotFoundError("Company", productDto.CompanyId);
+            }
+
+            var productEntity = _productMapper.ToEntity(productDto);
+            var newProduct = await _unitOfWork.Products.Create(productEntity, cancellationToken);
+            await _unitOfWork.SaveChanges(cancellationToken);
+
+            return _productMapper.FromEntity(newProduct);
         }
         catch (Exception ex)
         {
