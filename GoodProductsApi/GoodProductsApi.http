@@ -3,4 +3,7 @@
 GET {{GoodProductsApi_HostAddress}}/api/company/
 Accept: application/json
 
+GET {{GoodProductsApi_HostAddress}}/api/product/
+Accept: application/json
+
 ###
