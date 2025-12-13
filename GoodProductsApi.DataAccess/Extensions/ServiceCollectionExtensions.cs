@@ -14,7 +14,8 @@ public static class ServiceCollectionExtensions
         services.AddDbContext<ProductsDbContext>(options =>
         {
             options
-                .UseSqlServer(dbConnectionString);
+                .UseSqlServer(dbConnectionString)
+                .UseLazyLoadingProxies();
         });
 
         return services;
