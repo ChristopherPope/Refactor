@@ -34,6 +34,11 @@ internal sealed class ProductsService : IProductsService
             }
 
             var productEntity = _productMapper.ToEntity(productDto);
+            if (productEntity.Price <= 0)
+            {
+                productEntity.Price = 123;
+            }
+
             var newProduct = await _unitOfWork.Products.Create(productEntity, cancellationToken);
             await _unitOfWork.SaveChanges(cancellationToken);
 

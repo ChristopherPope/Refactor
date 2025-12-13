@@ -20,6 +20,6 @@ public class CompanyController : ProductsApiController
     {
         var result = await _companiesService.ReadAll(cancellationToken);
 
-        return MakeActionResult(result);
+        return MakeResult(result);
     }
 }
