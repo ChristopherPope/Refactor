@@ -1,6 +1,7 @@
 ﻿using FluentResults;
 using GoodProductsApi.BusinessLogic.DTOs;
 using GoodProductsApi.BusinessLogic.Mappers.Interfaces;
+using GoodProductsApi.BusinessLogic.Results;
 using GoodProductsApi.BusinessLogic.Services.Interfaces;
 using GoodProductsApi.DataAccess.Persistence.Interfaces;
 using Microsoft.Extensions.Logging;
@@ -20,6 +21,26 @@ internal sealed class ProductsService : IProductsService
         _unitOfWork = unitOfWork;
         _productMapper = productMapper;
         _logger = logger;
+    }
+
+    public async Task<Result<ProductDto?>> ReadById(int id, CancellationToken cancellationToken)
+    {
+        try
+        {
+            var product = await _unitOfWork.Products.ReadById(id, cancellationToken);
+            if (product is null)
+            {
+                return new EntityNotFoundError("Product", id);
+            }
+
+            return _productMapper.FromEntity(product);
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "Unable to read Product ID {Id}", id);
+
+            return Result.Fail($"Unable to read Product ID {id}");
+        }
     }
 
     public async Task<Result<List<ProductDto>>> ReadAll(CancellationToken cancellationToken)

@@ -18,8 +18,8 @@ public class CompanyController : ProductsApiController
     [HttpGet]
     public async Task<ActionResult<List<CompanyDto>>> Get(CancellationToken cancellationToken = default)
     {
-        var r = await _companiesService.ReadAll(cancellationToken);
+        var result = await _companiesService.ReadAll(cancellationToken);
 
-        return ReturnResult(r);
+        return MakeActionResult(result);
     }
 }

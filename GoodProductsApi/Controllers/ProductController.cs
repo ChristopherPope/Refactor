@@ -18,8 +18,16 @@ public class ProductController : ProductsApiController
     [HttpGet]
     public async Task<ActionResult<List<ProductDto>>> Get(CancellationToken cancellationToken = default)
     {
-        var r = await _productsService.ReadAll(cancellationToken);
+        var result = await _productsService.ReadAll(cancellationToken);
 
-        return ReturnResult(r);
+        return MakeActionResult(result);
+    }
+
+    [HttpGet("{id}")]
+    public async Task<ActionResult<List<ProductDto>>> Get(int id, CancellationToken cancellationToken = default)
+    {
+        var result = await _productsService.ReadById(id, cancellationToken);
+
+        return MakeActionResult(result);
     }
 }
