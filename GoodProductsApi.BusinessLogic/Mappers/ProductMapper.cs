@@ -1,0 +1,23 @@
+﻿using GoodProductsApi.BusinessLogic.DTOs;
+using GoodProductsApi.BusinessLogic.Mappers.Interfaces;
+using GoodProductsApi.DataAccess.Entities;
+
+namespace GoodProductsApi.BusinessLogic.Mappers;
+
+internal sealed class ProductMapper : IProductMapper
+{
+    public ProductDto FromEntity(Product entity)
+    {
+        return new ProductDto
+        {
+            Id = entity.Id,
+            Name = entity.Name,
+            Price = entity.Price,
+        };
+    }
+
+    public List<ProductDto> FromEntities(IEnumerable<Product> entities)
+    {
+        return [.. entities.Select(FromEntity)];
+    }
+}
