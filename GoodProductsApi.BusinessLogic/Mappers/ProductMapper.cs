@@ -6,6 +6,15 @@ namespace GoodProductsApi.BusinessLogic.Mappers;
 
 internal sealed class ProductMapper : IProductMapper
 {
+    public Product ToEntity(ProductDto dto)
+    {
+        return new Product
+        {
+            Name = dto.Name,
+            Price = dto.Price,
+        };
+    }
+
     public ProductDto FromEntity(Product entity)
     {
         return new ProductDto
