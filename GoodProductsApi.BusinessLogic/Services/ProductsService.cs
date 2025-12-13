@@ -23,6 +23,20 @@ internal sealed class ProductsService : IProductsService
         _logger = logger;
     }
 
+    public async Task<Result> Create(ProductDto productDto, CancellationToken cancellationToken)
+    {
+        try
+        {
+            throw new NotImplementedException();
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "Unable to create the new Product");
+
+            return Result.Fail("Unable to create the new Product");
+        }
+    }
+
     public async Task<Result<ProductDto?>> ReadById(int id, CancellationToken cancellationToken)
     {
         try
