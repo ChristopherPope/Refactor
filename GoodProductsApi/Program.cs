@@ -14,7 +14,7 @@ try
     var builder = WebApplication.CreateBuilder(args);
 
     builder.Services
-        .AddGoodProductsApiBusinessLogic(builder.Configuration.GetConnectionString("ApiDb") ?? string.Empty)
+        .AddGoodProductsApiBusinessLogic(builder.Configuration.GetConnectionString("ProductsDb") ?? string.Empty)
         .AddSerilog((services, lc) => lc
             .ReadFrom.Configuration(builder.Configuration)
             .ReadFrom.Services(services)
