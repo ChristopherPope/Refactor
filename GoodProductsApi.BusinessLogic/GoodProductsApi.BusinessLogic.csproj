@@ -14,8 +14,4 @@
     <ProjectReference Include="..\GoodProductsApi.DataAccess\GoodProductsApi.DataAccess.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Services\Interfaces\" />
-  </ItemGroup>
-
 </Project>
