@@ -12,6 +12,7 @@ internal sealed class ProductMapper : IProductMapper
         {
             Name = dto.Name,
             Price = dto.Price,
+            CompanyId = dto.CompanyId
         };
     }
 

@@ -11,3 +11,16 @@ Accept: application/json
 GET {{GoodProductsApi_HostAddress}}/api/product/5
 Accept: application/json
 ###
+
+POST {{GoodProductsApi_HostAddress}}/api/product
+Content-Type: application/json
+Accept: application/json
+
+{
+  "name": "Monkeys R Us",
+  "price": 15.99,
+  "CompanyId": 5
+}
+
+
+###
