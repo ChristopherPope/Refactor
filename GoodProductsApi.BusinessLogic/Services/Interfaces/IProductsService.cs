@@ -5,5 +5,5 @@ namespace GoodProductsApi.BusinessLogic.Services.Interfaces;
 
 public interface IProductsService
 {
-    Task<Result<List<CompanyDto>>> ReadAll(CancellationToken cancellationToken);
+    Task<Result<List<ProductDto>>> ReadAll(CancellationToken cancellationToken);
 }

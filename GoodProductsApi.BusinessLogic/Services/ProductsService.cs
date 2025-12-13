@@ -22,8 +22,7 @@ internal sealed class ProductsService : IProductsService
         _logger = logger;
     }
 
-
-    public async Task<Result<List<CompanyDto>>> ReadAll(CancellationToken cancellationToken)
+    public async Task<Result<List<ProductDto>>> ReadAll(CancellationToken cancellationToken)
     {
         try
         {

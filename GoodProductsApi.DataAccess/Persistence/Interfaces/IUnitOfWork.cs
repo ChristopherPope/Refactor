@@ -7,4 +7,5 @@ public interface IUnitOfWork
     Task<int> SaveChanges(CancellationToken cancellationToken = default);
 
     ICompanyRepository Companies { get; }
+    IProductRepository Products { get; }
 }
