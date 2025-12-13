@@ -40,7 +40,12 @@ public abstract class ProductsApiController : ControllerBase
 
     private ActionResult MakeErrorResult<T>(Result<T> result)
     {
-        return MakeErrorResult(result);
+        if (result.HasError<EntityNotFoundError>())
+        {
+            return NotFound(result.GetErrorMessages());
+        }
+
+        return Problem(result.GetErrorMessages());
     }
 
     private ActionResult MakeErrorResult(Result result)

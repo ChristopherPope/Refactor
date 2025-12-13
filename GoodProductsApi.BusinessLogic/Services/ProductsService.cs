@@ -75,23 +75,46 @@ internal sealed class ProductsService : IProductsService
         }
     }
 
-    public async Task<Result<ProductDto?>> ReadById(int id, CancellationToken cancellationToken)
+    public async Task<Result> Delete(int productId, CancellationToken cancellationToken)
     {
         try
         {
-            var product = await _unitOfWork.Products.ReadById(id, cancellationToken);
+            var product = await _unitOfWork.Products.ReadById(productId, cancellationToken);
             if (product is null)
             {
-                return new EntityNotFoundError("Product", id);
+                return new EntityNotFoundError("Product", productId);
+            }
+
+            _unitOfWork.Products.Delete(product);
+            await _unitOfWork.SaveChanges(cancellationToken);
+
+            return Result.Ok();
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "Unable to delete Product ID {Id}", productId);
+
+            return Result.Fail($"Unable to delete Product ID {productId}");
+        }
+    }
+
+    public async Task<Result<ProductDto?>> ReadById(int productId, CancellationToken cancellationToken)
+    {
+        try
+        {
+            var product = await _unitOfWork.Products.ReadById(productId, cancellationToken);
+            if (product is null)
+            {
+                return new EntityNotFoundError("Product", productId);
             }
 
             return _productMapper.FromEntity(product);
         }
         catch (Exception ex)
         {
-            _logger.LogError(ex, "Unable to read Product ID {Id}", id);
+            _logger.LogError(ex, "Unable to read Product ID {Id}", productId);
 
-            return Result.Fail($"Unable to read Product ID {id}");
+            return Result.Fail($"Unable to read Product ID {productId}");
         }
     }
 

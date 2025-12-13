@@ -46,4 +46,12 @@ public class ProductController : ProductsApiController
 
         return MakeResult(result);
     }
+
+    [HttpDelete("{id}")]
+    public async Task<ActionResult<List<ProductDto>>> Delete(int id, CancellationToken cancellationToken = default)
+    {
+        var result = await _productsService.Delete(id, cancellationToken);
+
+        return MakeResult(result);
+    }
 }

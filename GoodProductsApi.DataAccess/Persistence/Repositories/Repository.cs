@@ -14,6 +14,11 @@ internal abstract class Repository<T> where T : class
         Entities = DbContext.Set<T>();
     }
 
+    public void Delete(T entity)
+    {
+        Entities.Remove(entity);
+    }
+
     public async Task<T> Create(T entity, CancellationToken cancellationToken)
     {
         var newEntity = Entities.CreateProxy();
