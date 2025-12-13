@@ -1,0 +1,7 @@
+<Solution>
+  <Folder Name="/Solution Files/">
+    <File Path=".gitignore" />
+    <File Path="README.md" />
+  </Folder>
+  <Project Path="BadProductsApi/BadProductsApi.csproj" />
+</Solution>
