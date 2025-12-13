@@ -1,0 +1,5 @@
+﻿namespace GoodProductsApi.DataAccess.Persistence.Repositories.Interfaces;
+
+public interface IRepository<T> where T : class
+{
+}
