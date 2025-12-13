@@ -1,4 +1,5 @@
 ﻿using FluentResults;
+using GoodProductsApi.BusinessLogic.DTOs;
 using GoodProductsApi.BusinessLogic.Results;
 using GoodProductsApi.Extensions;
 using Microsoft.AspNetCore.Mvc;
@@ -17,11 +18,11 @@ public abstract class ProductsApiController : ControllerBase
         return MakeErrorResult(result);
     }
 
-    protected ActionResult MakeCreateResult<T>(Result<T> result, string uri, int id)
+    protected ActionResult MakeCreateResult<T>(Result<T> result, string uri) where T : ProductsApiDto
     {
         if (result.IsSuccess)
         {
-            return Created(uri, id);
+            return Created(uri, result.Value.Id);
         }
 
         return MakeErrorResult(result);
