@@ -11,6 +11,7 @@ internal sealed class ProductMapper : IProductMapper
         return new ProductDto
         {
             Id = entity.Id,
+            CompanyId = entity.CompanyId,
             Name = entity.Name,
             Price = entity.Price,
         };
