@@ -8,4 +8,9 @@ public static class ResultExtensions
     {
         return string.Join(", ", result.Errors.Select(x => x.Message));
     }
+
+    static public string GetErrorMessages(this Result result)
+    {
+        return string.Join(", ", result.Errors.Select(x => x.Message));
+    }
 }

@@ -18,6 +18,16 @@ public abstract class ProductsApiController : ControllerBase
         return MakeErrorResult(result);
     }
 
+    protected ActionResult MakeResult(Result result)
+    {
+        if (result.IsSuccess)
+        {
+            return Ok();
+        }
+
+        return MakeErrorResult(result);
+    }
+
     protected ActionResult MakeCreateResult<T>(Result<T> result, string uri) where T : ProductsApiDto
     {
         if (result.IsSuccess)
@@ -29,6 +39,11 @@ public abstract class ProductsApiController : ControllerBase
     }
 
     private ActionResult MakeErrorResult<T>(Result<T> result)
+    {
+        return MakeErrorResult(result);
+    }
+
+    private ActionResult MakeErrorResult(Result result)
     {
         if (result.HasError<EntityNotFoundError>())
         {

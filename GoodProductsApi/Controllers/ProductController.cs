@@ -15,6 +15,14 @@ public class ProductController : ProductsApiController
         _productsService = productsService;
     }
 
+    [HttpPut]
+    public async Task<IActionResult> Update(ProductDto bobo, CancellationToken cancellationToken)
+    {
+        var result = await _productsService.Update(bobo, cancellationToken);
+
+        return MakeResult(result);
+    }
+
     [HttpPost]
     public async Task<IActionResult> Create(ProductDto product, CancellationToken cancellationToken)
     {

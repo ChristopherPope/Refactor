@@ -19,8 +19,17 @@ Accept: application/json
 {
   "name": "Monkeys R Us",
   "price": 15.99,
-  "CompanyId": 5
+  "companyId": 5
 }
+###
 
+Put {{GoodProductsApi_HostAddress}}/api/product/
+Content-Type: application/json
+Accept: application/json
 
+{
+  "name": "Monkeys R Us",
+  "price": 1.99,
+  "id": 5
+}
 ###
