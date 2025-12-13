@@ -10,3 +10,4 @@ The rest of the solution contains these projects:
  - **GoodProductsApi** - The REST API controllers.
  - **GoodProductsApi.BusinessLogic** - Business logic code.
  - **GoodProductsApi.DataAccess** - DB access code.
+ - **LoadDatabase** - Load the database with bogus data.
