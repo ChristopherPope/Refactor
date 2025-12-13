@@ -1,3 +1,4 @@
+using GoodProductsApi.BusinessLogic.Extensions;
 using Serilog;
 using Serilog.Templates;
 using Serilog.Templates.Themes;
@@ -12,13 +13,15 @@ try
 
     var builder = WebApplication.CreateBuilder(args);
 
-    builder.Services.AddSerilog((services, lc) => lc
-    .ReadFrom.Configuration(builder.Configuration)
-    .ReadFrom.Services(services)
-    .Enrich.FromLogContext()
-    .WriteTo.Console(new ExpressionTemplate(
-        "[{@t:HH:mm:ss} {@l:u3}{#if @tr is not null} ({substring(@tr,0,4)}:{substring(@sp,0,4)}){#end}] {@m}\n{@x}",
-        theme: TemplateTheme.Code)));
+    builder.Services
+        .AddGoodProductsApiBusinessLogic(builder.Configuration.GetConnectionString("ApiDb") ?? string.Empty)
+        .AddSerilog((services, lc) => lc
+            .ReadFrom.Configuration(builder.Configuration)
+            .ReadFrom.Services(services)
+            .Enrich.FromLogContext()
+            .WriteTo.Console(new ExpressionTemplate(
+                "[{@t:HH:mm:ss} {@l:u3}{#if @tr is not null} ({substring(@tr,0,4)}:{substring(@sp,0,4)}){#end}] {@m}\n{@x}",
+                theme: TemplateTheme.Code)));
 
     builder.Services.AddControllers();
     builder.Services.AddOpenApi();
