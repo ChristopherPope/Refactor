@@ -23,6 +23,29 @@ internal sealed class ProductsService : IProductsService
         _logger = logger;
     }
 
+    public async Task<Result> Update(ProductDto productDto, CancellationToken cancellationToken)
+    {
+        try
+        {
+            var productEntity = await _unitOfWork.Products.ReadById(productDto.Id, cancellationToken);
+            if (productEntity is null)
+            {
+                return new EntityNotFoundError("Product", productDto.Id);
+            }
+
+            _productMapper.CopyToEntity(productDto, productEntity);
+            await _unitOfWork.SaveChanges(cancellationToken);
+
+            return Result.Ok();
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "Unable to update the Product (ID: {Id}", productDto.Id);
+
+            return Result.Fail($"Unable to update the Product (ID: {productDto.Id}");
+        }
+    }
+
     public async Task<Result<ProductDto>> Create(ProductDto productDto, CancellationToken cancellationToken)
     {
         try
