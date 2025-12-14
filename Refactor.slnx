@@ -3,6 +3,9 @@
     <File Path=".gitignore" />
     <File Path="README.md" />
   </Folder>
+  <Folder Name="/UnitTests/">
+    <Project Path="UnitTests/GoodProductsApi.UnitTests/GoodProductsApi.UnitTests.csproj" />
+  </Folder>
   <Project Path="BadProductsApi/BadProductsApi.csproj" />
   <Project Path="GoodProductsApi.BusinessLogic/GoodProductsApi.BusinessLogic.csproj" />
   <Project Path="GoodProductsApi.DataAccess/GoodProductsApi.DataAccess.csproj" />
