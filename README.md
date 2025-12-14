@@ -2,7 +2,7 @@
 
 This solution contains a poorly written project named **BadProductsApi** which I created with this ChatGPT request:
 > Create a .Net 10 REST API project which is a poorly written C# REST API for managing products which does not follow SOLID. 
->The API should use EF against these tables: Product, Company and it should use controllers`
+>The API should use controllers and use EF against these tables: Product`
 
 The rest of the solution contains these projects:
 
