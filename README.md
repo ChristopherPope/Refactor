@@ -11,3 +11,6 @@ The rest of the solution contains these projects:
  - **GoodProductsApi.BusinessLogic** - Business logic code.
  - **GoodProductsApi.DataAccess** - DB access code.
  - **LoadDatabase** - Load the database with bogus data.
+ - **GoodProductsApi.BusinessLogic.UnitTests*** - Unit tests for the business logic project.
+ - **GoodProductsApi.DataAccess.UnitTests*** - Unit tests for the data access project.
+ - **GoodProductsApi.UnitTests*** - Integration tests for the API.
