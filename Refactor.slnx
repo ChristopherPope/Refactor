@@ -5,6 +5,7 @@
   </Folder>
   <Folder Name="/UnitTests/">
     <Project Path="UnitTests/GoodProductsApi.BusinessLogic.UnitTests/GoodProductsApi.BusinessLogic.UnitTests.csproj" Id="94babf6f-85f3-44cd-8089-d95e3cba6f2e" />
+    <Project Path="UnitTests/GoodProductsApi.DataAccess.UnitTests/GoodProductsApi.DataAccess.UnitTests.csproj" Id="94b5dbdb-79b6-49cb-8470-6a0175ba4ebe" />
     <Project Path="UnitTests/GoodProductsApi.UnitTests/GoodProductsApi.UnitTests.csproj" />
   </Folder>
   <Project Path="BadProductsApi/BadProductsApi.csproj" />
