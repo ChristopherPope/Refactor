@@ -8,7 +8,7 @@ using Microsoft.Extensions.Logging;
 
 namespace GoodProductsApi.BusinessLogic.Services;
 
-internal sealed class ProductsService : IProductsService
+public sealed class ProductsService : IProductsService
 {
     private readonly IUnitOfWork _unitOfWork;
     private readonly ILogger<ProductsService> _logger;

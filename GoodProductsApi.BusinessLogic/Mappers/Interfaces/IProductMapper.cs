@@ -3,7 +3,7 @@ using GoodProductsApi.DataAccess.Entities;
 
 namespace GoodProductsApi.BusinessLogic.Mappers.Interfaces;
 
-internal interface IProductMapper
+public interface IProductMapper
 {
     List<ProductDto> FromEntities(IEnumerable<Product> entities);
     void CopyToEntity(ProductDto dto, Product entity);
